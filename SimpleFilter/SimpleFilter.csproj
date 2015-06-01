@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DF59BF83-E0A1-4054-87D0-0C5CE8C2F19D}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SimpleFilter</RootNamespace>
+    <AssemblyName>SimpleFilter</AssemblyName>
+    <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>SimpleFilter_$(Configuration)_$(Platform).xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>SimpleFilter.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\ARM\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\ARM\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Config.cs" />
+    <Compile Include="Control\FilterImage.xaml.cs">
+      <DependentUpon>FilterImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FilterListItem.xaml.cs">
+      <DependentUpon>FilterListItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Loading.xaml.cs">
+      <DependentUpon>Loading.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\NinePatchImage.xaml.cs">
+      <DependentUpon>NinePatchImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converter\NinePatch.cs" />
+    <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BasicUtils.cs" />
+    <Compile Include="Models\FilterBitmap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="Control\FilterImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\FilterListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\Loading.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\NinePatchImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Filters\willow\glowField.pkm" />
+    <None Include="Assets\Filters\willow\willowVignette.pkm" />
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\AlignmentGrid.png" />
+    <Content Include="Assets\rotation.png" />
+    <Content Include="Assets\ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\bottom.png" />
+    <Content Include="Assets\Capture.PNG" />
+    <Content Include="Assets\Filters\amaro\map.png" />
+    <Content Include="Assets\Filters\amaro\overlay_map.png" />
+    <Content Include="Assets\Filters\brannan\blowout_map.png" />
+    <Content Include="Assets\Filters\brannan\border.png" />
+    <Content Include="Assets\Filters\brannan\contrast_map.png" />
+    <Content Include="Assets\Filters\brannan\luma_map.png" />
+    <Content Include="Assets\Filters\brannan\map.png" />
+    <Content Include="Assets\Filters\brannan\screen_map.png" />
+    <Content Include="Assets\Filters\earlybird\blowout_map.png" />
+    <Content Include="Assets\Filters\earlybird\border.png" />
+    <Content Include="Assets\Filters\earlybird\curves_map.png" />
+    <Content Include="Assets\Filters\earlybird\map_2d.png" />
+    <Content Include="Assets\Filters\earlybird\overlay_map.png" />
+    <Content Include="Assets\Filters\f1977\map.png" />
+    <Content Include="Assets\Filters\f1977\screen_map.png" />
+    <Content Include="Assets\Filters\hefe\gradient_map.png" />
+    <Content Include="Assets\Filters\hefe\map.png" />
+    <Content Include="Assets\Filters\hefe\metal.PNG" />
+    <Content Include="Assets\Filters\hefe\soft_light_map.png" />
+    <Content Include="Assets\Filters\hudson\blowout.PNG" />
+    <Content Include="Assets\Filters\hudson\border.png" />
+    <Content Include="Assets\Filters\hudson\map.png" />
+    <Content Include="Assets\Filters\inkwell\map.png" />
+    <Content Include="Assets\Filters\lord_kelvin\border.png" />
+    <Content Include="Assets\Filters\lord_kelvin\map.png" />
+    <Content Include="Assets\Filters\lo_fi\border.png" />
+    <Content Include="Assets\Filters\lo_fi\map.png" />
+    <Content Include="Assets\Filters\lo_fi\vignette_map.png" />
+    <Content Include="Assets\Filters\mayfair\border.png" />
+    <Content Include="Assets\Filters\mayfair\colorGradient.png" />
+    <Content Include="Assets\Filters\mayfair\colorOverlay.png" />
+    <Content Include="Assets\Filters\mayfair\glowField.PNG" />
+    <Content Include="Assets\Filters\mayfair\overlayMap100.png" />
+    <Content Include="Assets\Filters\nashville\border.png" />
+    <Content Include="Assets\Filters\nashville\map.png" />
+    <Content Include="Assets\Filters\rise\map.png" />
+    <Content Include="Assets\Filters\shared\blackboard.png" />
+    <Content Include="Assets\Filters\shared\blackboard_2.png" />
+    <Content Include="Assets\Filters\shared\black_overlay_map.png" />
+    <Content Include="Assets\Filters\shared\border_black.png" />
+    <Content Include="Assets\Filters\shared\border_white.png" />
+    <Content Include="Assets\Filters\shared\edge_burn.PNG" />
+    <Content Include="Assets\Filters\shared\hardlight_map.png" />
+    <Content Include="Assets\Filters\shared\metal_texture.PNG" />
+    <Content Include="Assets\Filters\shared\noop.png" />
+    <Content Include="Assets\Filters\shared\overlay_map.png" />
+    <Content Include="Assets\Filters\shared\soft_light_map.png" />
+    <Content Include="Assets\Filters\shared\vignette_map.png" />
+    <Content Include="Assets\Filters\shared\vignette_map_plus_darker.png" />
+    <Content Include="Assets\Filters\sierra\border.png" />
+    <Content Include="Assets\Filters\sierra\map.png" />
+    <Content Include="Assets\Filters\sierra\smoke.PNG" />
+    <Content Include="Assets\Filters\sierra\soft_light.png" />
+    <Content Include="Assets\Filters\sierra\vignette.PNG" />
+    <Content Include="Assets\Filters\sutro\edge_burn.PNG" />
+    <Content Include="Assets\Filters\sutro\map.png" />
+    <Content Include="Assets\Filters\sutro\metal.PNG" />
+    <Content Include="Assets\Filters\toaster\color_shift_map.png" />
+    <Content Include="Assets\Filters\toaster\map.png" />
+    <Content Include="Assets\Filters\toaster\metal.PNG" />
+    <Content Include="Assets\Filters\toaster\overlay_map.png" />
+    <Content Include="Assets\Filters\toaster\soft_light_map.png" />
+    <Content Include="Assets\Filters\valencia\gradient_map.png" />
+    <Content Include="Assets\Filters\valencia\map.png" />
+    <Content Include="Assets\Filters\video\ashby\levels.png" />
+    <Content Include="Assets\Filters\video\ashby\tonemap.png" />
+    <Content Include="Assets\Filters\video\brooklyn\curves.png" />
+    <Content Include="Assets\Filters\video\charmes\map.png" />
+    <Content Include="Assets\Filters\video\clarendon\Glacial1.png" />
+    <Content Include="Assets\Filters\video\clarendon\Glacial2.png" />
+    <Content Include="Assets\Filters\video\dogpatch\curves1.png" />
+    <Content Include="Assets\Filters\video\dogpatch\curves_lgg.png" />
+    <Content Include="Assets\Filters\video\gingham\curves1.png" />
+    <Content Include="Assets\Filters\video\gingham\curves_lgg.png" />
+    <Content Include="Assets\Filters\video\ginza\curves1.png" />
+    <Content Include="Assets\Filters\video\ginza\curves2.png" />
+    <Content Include="Assets\Filters\video\helena\epic_1.png" />
+    <Content Include="Assets\Filters\video\helena\epic_2.png" />
+    <Content Include="Assets\Filters\video\maven\Lansdowne1.png" />
+    <Content Include="Assets\Filters\video\maven\Lansdowne2.png" />
+    <Content Include="Assets\Filters\video\moon\curves1.png" />
+    <Content Include="Assets\Filters\video\moon\curves2.png" />
+    <Content Include="Assets\Filters\video\skyline\curves.png" />
+    <Content Include="Assets\Filters\video\stinson\curves.png" />
+    <Content Include="Assets\Filters\video\vesper\map.png" />
+    <Content Include="Assets\Filters\walden\map.png" />
+    <Content Include="Assets\Filters\willow\glowField.PNG" />
+    <Content Include="Assets\Filters\willow\overlayMap81.png" />
+    <Content Include="Assets\Filters\willow\willowMap.png" />
+    <Content Include="Assets\Filters\willow\willowSoftLight100.png" />
+    <Content Include="Assets\Filters\willow\willowVignette.PNG" />
+    <Content Include="Assets\Filters\x_pro2\border.png" />
+    <Content Include="Assets\Filters\x_pro2\map.png" />
+    <Content Include="Assets\home_main_bg.jpg" />
+    <Content Include="Assets\loading-ingame.png" />
+    <Content Include="Assets\PatchImage\btn_send_chat.9.png" />
+    <Content Include="Assets\PatchImage\intro_btn_nor.9.png" />
+    <Content Include="Assets\PatchImage\intro_btn_tap.9.png" />
+    <Content Include="Assets\PatchImage\tab1.9.png" />
+    <Content Include="Assets\sdk\add.png" />
+    <Content Include="Assets\sdk\back.png" />
+    <Content Include="Assets\sdk\cancel.png" />
+    <Content Include="Assets\sdk\check.png" />
+    <Content Include="Assets\sdk\share.png" />
+    <Content Include="Assets\Thumbnails\cm_eft_ic_instagram.png" />
+    <Content Include="Assets\Thumbnails\filter_1977.png" />
+    <Content Include="Assets\Thumbnails\filter_amaro.png" />
+    <Content Include="Assets\Thumbnails\filter_ashby.png" />
+    <Content Include="Assets\Thumbnails\filter_brannan.png" />
+    <Content Include="Assets\Thumbnails\filter_brooklyn.png" />
+    <Content Include="Assets\Thumbnails\filter_charmes.png" />
+    <Content Include="Assets\Thumbnails\filter_clarendon.png" />
+    <Content Include="Assets\Thumbnails\filter_dogpatch.png" />
+    <Content Include="Assets\Thumbnails\filter_earlybird.png" />
+    <Content Include="Assets\Thumbnails\filter_gingham.png" />
+    <Content Include="Assets\Thumbnails\filter_ginza.png" />
+    <Content Include="Assets\Thumbnails\filter_hefe.png" />
+    <Content Include="Assets\Thumbnails\filter_helena.png" />
+    <Content Include="Assets\Thumbnails\filter_hudson.png" />
+    <Content Include="Assets\Thumbnails\filter_inkwell.png" />
+    <Content Include="Assets\Thumbnails\filter_kelvin.png" />
+    <Content Include="Assets\Thumbnails\filter_lofi.png" />
+    <Content Include="Assets\Thumbnails\filter_maven.png" />
+    <Content Include="Assets\Thumbnails\filter_mayfair.png" />
+    <Content Include="Assets\Thumbnails\filter_moon.png" />
+    <Content Include="Assets\Thumbnails\filter_nashville.png" />
+    <Content Include="Assets\Thumbnails\filter_normal.png" />
+    <Content Include="Assets\Thumbnails\filter_rise.png" />
+    <Content Include="Assets\Thumbnails\filter_sierra.png" />
+    <Content Include="Assets\Thumbnails\filter_skyline.png" />
+    <Content Include="Assets\Thumbnails\filter_stinson.png" />
+    <Content Include="Assets\Thumbnails\filter_sutro.png" />
+    <Content Include="Assets\Thumbnails\filter_toaster.png" />
+    <Content Include="Assets\Thumbnails\filter_valencia.png" />
+    <Content Include="Assets\Thumbnails\filter_vesper.png" />
+    <Content Include="Assets\Thumbnails\filter_walden.png" />
+    <Content Include="Assets\Thumbnails\filter_willow.png" />
+    <Content Include="Assets\Thumbnails\filter_xproii.png" />
+    <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\FlipCycleTileMedium.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\FlipCycleTileSmall.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\IconicTileMediumLarge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\IconicTileSmall.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="flat-color-theme-action-effect-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="WriteableBitmapExWinPhone">
+      <HintPath>..\packages\WriteableBitmapEx.1.5.0.0\lib\WindowsPhone8\WriteableBitmapExWinPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="WriteableBitmapExWinPhoneXnaDependant">
+      <HintPath>..\packages\WriteableBitmapEx.1.5.0.0\lib\WindowsPhone8\WriteableBitmapExWinPhoneXnaDependant.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+</Project>
