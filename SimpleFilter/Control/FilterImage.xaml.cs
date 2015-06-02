@@ -87,7 +87,7 @@ namespace SimpleFilter.Control
         {
             lsbFilterList.Items.Clear();
 
-            //lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = amaro_path, FilterName = "Amaro", FilterType = Filter.AMARO });
+            lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = amaro_path, FilterName = "Amaro", FilterType = Filter.AMARO });
             lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = inkvell_path, FilterName = "Inkwell", FilterType = Filter.INKVELL });
             lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = nashville_path, FilterName = "Nash Ville", FilterType = Filter.NASHVILLE });
             lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = rise_path, FilterName = "Rise", FilterType = Filter.RISE });
@@ -103,7 +103,7 @@ namespace SimpleFilter.Control
             lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = hefe_path, FilterName = "Hefe", FilterType = Filter.HEFE });
             lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = f1997_path, FilterName = "F1977", FilterType = Filter.F1997 });
             lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = valencia_path, FilterName = "Valencia", FilterType = Filter.VALENCIA });
-            //lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = sutro_path, FilterName = "Sutro", FilterType = Filter.SUTRO });
+            lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = sutro_path, FilterName = "Sutro", FilterType = Filter.SUTRO });
         }
 
         private void tbEmpty_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

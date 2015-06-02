@@ -67,23 +67,23 @@ namespace SimpleFilter.Models
                     var colorB = maskBitmap.GetPixel(x, y);
 
                     int R = blendModeMap.GetPixel(colorB.R, colorA.R).R;
-                    R = R + (int)((R - colorA.R) * maskOpacity);
+                    R = colorA.R + (int)((R - colorA.R) * maskOpacity);
 
                     int G = blendModeMap.GetPixel(colorB.G, colorA.G).G;
-                    G = G + (int)((G - colorA.G) * maskOpacity);
+                    G = colorA.G + (int)((G - colorA.G) * maskOpacity);
 
                     int B = blendModeMap.GetPixel(colorB.B, colorA.B).B;
-                    B = B + (int)((B - colorA.B) * maskOpacity);
+                    B = colorA.B + (int)((B - colorA.B) * maskOpacity);
 
-                    //int A = blendModeMap.GetPixel(colorB.A, colorA.A).A;
-                    //A = A + (int)((A - colorA.A) * maskOpacity);
+                    int A = blendModeMap.GetPixel(colorB.A, colorA.A).A;
+                    A = colorA.A + (int)((A - colorA.A) * maskOpacity);
 
-                    R = (R > 255) ? 255 : R; 
-                    G = (G > 255) ? 255 : G; 
+                    R = (R > 255) ? 255 : R;
+                    G = (G > 255) ? 255 : G;
                     B = (B > 255) ? 255 : B;
-                    //A = (A > 255) ? 255 : A;
+                    A = (A > 255) ? 255 : A;
 
-                    resultBitmap.SetPixel(x, y, Color.FromArgb(255, (byte)R, (byte)G, (byte)B));
+                    resultBitmap.SetPixel(x, y, Color.FromArgb((byte)A, (byte)R, (byte)G, (byte)B));
                 }
             blendModeMap = null;
             maskBitmap = null;
