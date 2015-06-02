@@ -87,7 +87,7 @@ namespace SimpleFilter.Control
         {
             lsbFilterList.Items.Clear();
 
-            lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = amaro_path, FilterName = "Amaro", FilterType = Filter.AMARO });
+            //lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = amaro_path, FilterName = "Amaro", FilterType = Filter.AMARO });
             lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = inkvell_path, FilterName = "Inkwell", FilterType = Filter.INKVELL });
             lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = nashville_path, FilterName = "Nash Ville", FilterType = Filter.NASHVILLE });
             lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = rise_path, FilterName = "Rise", FilterType = Filter.RISE });
@@ -103,7 +103,7 @@ namespace SimpleFilter.Control
             lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = hefe_path, FilterName = "Hefe", FilterType = Filter.HEFE });
             lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = f1997_path, FilterName = "F1977", FilterType = Filter.F1997 });
             lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = valencia_path, FilterName = "Valencia", FilterType = Filter.VALENCIA });
-            lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = sutro_path, FilterName = "Sutro", FilterType = Filter.SUTRO });
+            //lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = sutro_path, FilterName = "Sutro", FilterType = Filter.SUTRO });
         }
 
         private void tbEmpty_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -267,13 +267,68 @@ namespace SimpleFilter.Control
             {
                 if(sourceImage!=null)
                 {
-                    displayImage = sourceImage.Rotate(90);
-                    processImage.Source = displayImage;
+                    sourceImage = sourceImage.Rotate(90);
+                    processImage.Source = sourceImage;
+                    displayImage = sourceImage;
                 }
             }
             else
             {
                 displayImage = displayImage.Rotate(90);
+                processImage.Source = displayImage;
+            }
+        }
+
+        private void btnFlipHorizontal_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            if (displayImage == null)
+            {
+                if (sourceImage != null)
+                {
+                    sourceImage = sourceImage.Flip(WriteableBitmapExtensions.FlipMode.Vertical);
+                    processImage.Source = sourceImage;
+                    displayImage = sourceImage;
+                }
+            }
+            else
+            {
+                displayImage = displayImage.Flip(WriteableBitmapExtensions.FlipMode.Vertical);
+                processImage.Source = displayImage;
+            }
+        }
+
+        private void btnFlipVertical_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            if (displayImage == null)
+            {
+                if (sourceImage != null)
+                {
+                    sourceImage = sourceImage.Flip(WriteableBitmapExtensions.FlipMode.Horizontal);
+                    processImage.Source = sourceImage;
+                    displayImage = sourceImage;
+                }
+            }
+            else
+            {
+                displayImage = displayImage.Flip(WriteableBitmapExtensions.FlipMode.Horizontal);
+                processImage.Source = displayImage;
+            }
+        }
+
+        private void btnRotation2_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            if (displayImage == null)
+            {
+                if (sourceImage != null)
+                {
+                    sourceImage = sourceImage.Rotate(270);
+                    processImage.Source = sourceImage;
+                    displayImage = sourceImage;
+                }
+            }
+            else
+            {
+                displayImage = displayImage.Rotate(270);
                 processImage.Source = displayImage;
             }
         }

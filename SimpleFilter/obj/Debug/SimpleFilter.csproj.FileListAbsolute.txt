@@ -27,4 +27,4 @@ D:\Work\WindowsPhone\SimpleFilter\SimpleFilter\obj\Debug\Control\NinePatchImage.
 D:\Work\WindowsPhone\SimpleFilter\SimpleFilter\obj\Debug\Control\FilterImage.g.cs
 D:\Work\WindowsPhone\SimpleFilter\SimpleFilter\obj\Debug\Control\FilterListItem.g.cs
 D:\Work\WindowsPhone\SimpleFilter\SimpleFilter\obj\Debug\Control\Loading.g.cs
-D:\Work\WindowsPhone\SimpleFilter\SimpleFilter\obj\Debug\SimpleFilter.csprojResolveAssemblyReference.cache
+D:\Work\WindowsPhone\SimpleFilter\SimpleFilter\obj\Debug\Control\ColorizePhoto.g.cs
