@@ -101,7 +101,7 @@ namespace SimpleFilter.Control
             lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = brannan_path, FilterName = "Brannan", FilterType = Filter.BRANNAN });
             lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = walden_path, FilterName = "Walden", FilterType = Filter.WALDEN });
             lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = hefe_path, FilterName = "Hefe", FilterType = Filter.HEFE });
-            lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = f1997_path, FilterName = "F1977", FilterType = Filter.F1997 });
+            lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = f1997_path, FilterName = "F1977", FilterType = Filter.F1977 });
             lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = valencia_path, FilterName = "Valencia", FilterType = Filter.VALENCIA });
             lsbFilterList.Items.Add(new FilterListItem() { IsActive = false, ImageSource = sutro_path, FilterName = "Sutro", FilterType = Filter.SUTRO });
         }
@@ -141,9 +141,9 @@ namespace SimpleFilter.Control
                 Debug.WriteLine(e.OriginalFileName);
                 bmp.SetSource(e.ChosenPhoto);
                 sourceImage = new WriteableBitmap(bmp);
-                MemoryStream ms = new MemoryStream();
-                sourceImage.SaveJpeg(ms, 640, 640, 0, 100);
-                ms.Close();
+                //MemoryStream ms = new MemoryStream();
+                if (sourceImage.PixelWidth != Config.SIZE || sourceImage.PixelHeight != Config.SIZE) sourceImage = sourceImage.Resize(Config.SIZE, Config.SIZE,WriteableBitmapExtensions.Interpolation.Bilinear);
+                //sourceImage.S
                 Dispatcher.BeginInvoke(()=>
                 {
                     processImage.Source = sourceImage;
@@ -259,6 +259,10 @@ namespace SimpleFilter.Control
         {
             displayImage = sourceImage;
             processImage.Source = displayImage;
+            foreach (var item in lsbFilterList.Items)
+            {
+                (item as FilterListItem).IsActive = false;
+            }
         }
 
         private void btnRotation_Tap(object sender, System.Windows.Input.GestureEventArgs e)

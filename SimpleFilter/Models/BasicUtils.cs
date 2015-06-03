@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,17 +16,36 @@ namespace SimpleFilter.Models
             //int mWidthMap = MAP_Config.SIZE;
             int mHeightMap = blendImage.PixelHeight;
 
+            int mWidth = baseImage.PixelWidth;
+            int mHeight = baseImage.PixelHeight;
+
             WriteableBitmap baseBitmap = baseImage;
             WriteableBitmap blendBitmap = blendImage;
-
-            if (mHeightMap == 1)
+            int index = 0;// mapIndex = 0;
+            int rA = 0, gA = 0, bA = 0, aA = 0;
+            int R = 0, G = 0, B = 0, A = 0;
+            /*if (mHeightMap == 1)
             {
-                baseBitmap.ForEach(
-                (x, y, color) => Color.FromArgb(color.A,
-                    (byte)blendBitmap.GetPixel(color.R, 0).R,
-                    (byte)blendBitmap.GetPixel(color.G, 0).G,
-                    (byte)blendBitmap.GetPixel(color.B, 0).B)
-                );
+                //baseBitmap.ForEach(
+                //(x, y, color) => Color.FromArgb(color.A,
+                //    (byte)blendBitmap.GetPixel(color.R, 0).R,
+                //    (byte)blendBitmap.GetPixel(color.G, 0).G,
+                //    (byte)blendBitmap.GetPixel(color.B, 0).B)
+                //);
+                for(int x = 0; x < Config.SIZE; x++)
+                    for(int y = 0; y < Config.SIZE; y++)
+                    {
+                        index = y * Config.SIZE + x;
+                        int colorA = baseImage.Pixels[index];
+
+                        rA = (colorA >> 16) & 0xff;
+                        gA = (colorA >> 8) & 0xff;
+                        bA = colorA & 0xff;
+                        aA = (colorA >> 24) & 0xff;
+                        
+                        baseBitmap.Pixels[index] = blendBitmap.Pixels[]
+                    }
+
             }
             else
             {
@@ -35,6 +55,41 @@ namespace SimpleFilter.Models
                     (byte)blendBitmap.GetPixel(color.G, 1).G,
                     (byte)blendBitmap.GetPixel(color.B, 2).B)
                 );
+            }
+             */
+
+            for (int x = 0; x < mWidth; x++)
+            {
+                for (int y = 0; y < mHeight; y++)
+                {
+                    index = y * mWidth + x;
+
+                    rA = (baseBitmap.Pixels[index] >> 16) & 0xff;
+                    gA = (baseBitmap.Pixels[index] >> 8) & 0xff;
+                    bA = baseBitmap.Pixels[index] & 0xff;
+                    aA = (baseBitmap.Pixels[index] >> 24) & 0xff;
+
+                    if (mHeightMap == 1)
+                    {
+                        R = (blendBitmap.Pixels[rA] >> 16) & 0xff;
+                        G = (blendBitmap.Pixels[gA] >> 8) & 0xff;
+                        B = blendBitmap.Pixels[bA] & 0xff;
+                        A = aA;
+                    }
+                    else
+                    {
+                        R = (blendBitmap.Pixels[rA] >> 16) & 0xff;
+                        G = (blendBitmap.Pixels[Config.MAP_SIZE + gA] >> 8) & 0xff;
+                        B = blendBitmap.Pixels[2 * Config.MAP_SIZE + bA] & 0xff;
+                        A = aA;
+                    }
+
+                    //R = (R > 255) ? 255 : R;
+                    //G = (G > 255) ? 255 : G;
+                    //B = (B > 255) ? 255 : B;
+                    //A = (A > 255) ? 255 : A;
+                    baseImage.Pixels[index] = (R << 16) | (G << 8) | B | (A << 24);
+                }
             }
             blendBitmap = null;
             return baseBitmap;
@@ -59,31 +114,64 @@ namespace SimpleFilter.Models
             WriteableBitmap maskBitmap = maskImage;
 
             WriteableBitmap resultBitmap = new WriteableBitmap(Config.SIZE, Config.SIZE);
-
+            int index = 0; int modeIndex = 0;
+            int rA = 0, gA = 0, bA = 0, aA = 0;
+            int rB = 0, gB = 0, bB = 0, aB = 0;
+            int R = 0, G = 0, B = 0, A = 0;
             for (int x = 0; x < Config.SIZE; x++)
                 for (int y = 0; y < Config.SIZE; y++)
                 {
-                    var colorA = baseImage.GetPixel(x, y);
-                    var colorB = maskBitmap.GetPixel(x, y);
+                    index = y * Config.SIZE + x;
+                    //var colorA = baseImage.GetPixel(x, y);
+                    //var colorB = maskBitmap.GetPixel(x, y);
 
-                    int R = blendModeMap.GetPixel(colorB.R, colorA.R).R;
-                    R = colorA.R + (int)((R - colorA.R) * maskOpacity);
+                    //R = blendModeMap.GetPixel(colorB.R, colorA.R).R;
+                    //R = colorA.R + (int)((R - colorA.R) * maskOpacity);
 
-                    int G = blendModeMap.GetPixel(colorB.G, colorA.G).G;
-                    G = colorA.G + (int)((G - colorA.G) * maskOpacity);
+                    //G = blendModeMap.GetPixel(colorB.G, colorA.G).G;
+                    //G = colorA.G + (int)((G - colorA.G) * maskOpacity);
 
-                    int B = blendModeMap.GetPixel(colorB.B, colorA.B).B;
-                    B = colorA.B + (int)((B - colorA.B) * maskOpacity);
+                    //B = blendModeMap.GetPixel(colorB.B, colorA.B).B;
+                    //B = colorA.B + (int)((B - colorA.B) * maskOpacity);
 
-                    int A = blendModeMap.GetPixel(colorB.A, colorA.A).A;
-                    A = colorA.A + (int)((A - colorA.A) * maskOpacity);
+                    //A = blendModeMap.GetPixel(colorB.A, colorA.A).A;
+                    //A = colorA.A + (int)((A - colorA.A) * maskOpacity);
 
+                    int colorA = baseImage.Pixels[index];
+                    int colorB = baseImage.Pixels[index];
+
+                    rA = (colorA >> 16) & 0xff;
+                    gA = (colorA >> 8) & 0xff;
+                    bA = colorA & 0xff;
+                    aA = (colorA >> 24) & 0xff;
+
+                    rB = (colorB >> 16) & 0xff;
+                    gB = (colorB >> 8) & 0xff;
+                    bB = colorB & 0xff;
+                    aB = (colorB >> 24) & 0xff;
+
+                    modeIndex = rA * Config.MAP_SIZE + rB;
+                    R = (blendModeMap.Pixels[modeIndex] >> 16) & 0xff;
+                    R = rA + (int)((R - rA) * maskOpacity);
+                    
+                    modeIndex = gA * Config.MAP_SIZE + gB;
+                    G = (blendModeMap.Pixels[modeIndex] >> 8) & 0xff;
+                    G = gA + (int)((G - gA) * maskOpacity);
+                    
+                    modeIndex = bA * Config.MAP_SIZE + bB;
+                    B = blendModeMap.Pixels[modeIndex] & 0xff;
+                    B = bA + (int)((B - bA) * maskOpacity);
+                    
+                    modeIndex = aA * Config.MAP_SIZE + aB;
+                    A = (blendModeMap.Pixels[modeIndex] >> 24) & 0xff;
+                    A = aA + (int)((A - aA) * maskOpacity);
+                    
                     R = (R > 255) ? 255 : R;
                     G = (G > 255) ? 255 : G;
                     B = (B > 255) ? 255 : B;
                     A = (A > 255) ? 255 : A;
 
-                    resultBitmap.SetPixel(x, y, Color.FromArgb((byte)A, (byte)R, (byte)G, (byte)B));
+                    resultBitmap.Pixels[index] = (A << 24) | (R << 16) | (G << 8) | B;
                 }
             blendModeMap = null;
             maskBitmap = null;
@@ -126,7 +214,12 @@ namespace SimpleFilter.Models
             modeMap.CreateOptions = BitmapCreateOptions.None;
             modeMap.ImageOpened += (s, e) =>
             {
-                tcs.SetResult(new WriteableBitmap(s as BitmapImage));
+                WriteableBitmap wrMap = new WriteableBitmap(modeMap);
+                if(wrMap.PixelWidth != Config.MAP_SIZE || wrMap.PixelHeight != Config.MAP_SIZE)
+                {
+                    wrMap = wrMap.Resize(Config.MAP_SIZE, Config.MAP_SIZE, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+                }
+                tcs.SetResult(wrMap);
             };
             return tcs.Task;
         }

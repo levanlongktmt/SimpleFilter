@@ -60,7 +60,7 @@ namespace SimpleFilter.Models
                 case Filter.HEFE:
                     resultBitmap = await FilterHefe(baseImage);
                     break;
-                case Filter.F1997:
+                case Filter.F1977:
                     resultBitmap = await FilterF1997(baseImage);
                     break;
                 case Filter.VALENCIA:

@@ -56,7 +56,7 @@ namespace SimpleFilter
         BRANNAN,
         WALDEN,
         HEFE,
-        F1997,
+        F1977,
         VALENCIA
     }
 }
